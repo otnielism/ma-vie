@@ -3128,3 +3128,44 @@ img, video, iframe, svg {
   transform: scale(1.03);
   transition: transform 0.3s ease-in-out;
 }
+
+/* ==========================================================
+   PERBAIKAN: TAMPILKAN DESKRIPSI PORTOFOLIO KEMBALI
+   (Hapus Overlay Item, Pertahankan Teks Deskripsi)
+   ========================================================== */
+
+/* 1. Kembalikan display `.portfolio-info` agar deskripsi teks muncul kembali */
+.portfolio .portfolio-item .portfolio-info {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: none !important; /* Hapus background gelap bawaan template */
+  padding: 15px !important;
+  position: static !important; /* Buat deskripsi mengalir secara alami di bawah gambar */
+}
+
+/* 2. Sembunyikan HANYA overlay gelap saat hover di atas gambar */
+.portfolio .portfolio-item .portfolio-wrap::before {
+  display: none !important;
+  background: none !important;
+}
+
+/* 3. Sembunyikan tombol merah bulat (+ dan link) */
+.portfolio .portfolio-item .portfolio-links {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* 4. Pastikan teks deskripsi memiliki warna yang benar dan terbaca */
+.portfolio .portfolio-item .portfolio-info h4 {
+  color: var(--heading-color) !important;
+  margin-top: 10px !important;
+  margin-bottom: 5px !important;
+}
+
+.portfolio .portfolio-item .portfolio-info p {
+  color: var(--default-color) !important;
+  opacity: 0.8 !important;
+  font-size: 14px !important;
+}
