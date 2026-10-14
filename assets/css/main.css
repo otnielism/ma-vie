@@ -2945,6 +2945,10 @@ section,
   opacity: 0.8;
 }
 
+/* ==========================================================
+   MOBILE RESPONSIVENESS & OVERFLOW FIXES (FolioOne Template)
+   ========================================================== */
+
 /* 1. Cegah Horizontal Overflow Global di HP */
 html, body {
   max-width: 100%;
@@ -3004,4 +3008,78 @@ img, video, iframe, svg {
 /* 5. Proteksi Flex/Grid Item Agar Tidak Memaksa Lebar Kontainer */
 .row > * {
   min-width: 0;
+}
+
+/* ==========================================
+   FIX RESPONSIVE RESUME & HEADER FOR MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* 1. Beri jarak aman padding di bagian container resume */
+  .resume {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  /* 2. Geser timeline ke kanan agar garis & dot merah tidak terpotong */
+  .resume .resume-item .resume-content {
+    padding-left: 2rem !important; /* Memberi ruang untuk garis dan dot */
+    margin-left: 0.5rem !important;
+  }
+
+  .about .timeline-item,
+  .resume .resume-item {
+    padding-left: 28px !important; /* Memastikan dot merah berada pas di dalam layar */
+  }
+
+  /* 3. Rapikan Header & Social Links di Layar Kecil */
+  .header .container-fluid,
+  .header .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .header .header-social-links {
+    padding-right: 0 !important;
+  }
+
+  /* 4. Optimasi Ukuran Font Heading agar Proporsional di HP */
+  .resume .resume-item .resume-title,
+  .section-title h2 {
+    font-size: 1.8rem !important;
+  }
+}
+
+/* ==========================================
+   FIX PORTFOLIO CARD & IMAGE CROP ON MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* 1. Mencegah gambar portofolio terpotong/ter-crop di HP */
+  .portfolio .portfolio-item img,
+  .portfolio-content img,
+  .portfolio-wrap img,
+  .portfolio-box img {
+    height: auto !important;          /* Batalkan tinggi kaku */
+    max-height: none !important;      /* Hilangkan batasan tinggi */
+    object-fit: contain !important;   /* Tampilkan seluruh isi gambar utuh */
+    width: 100% !important;
+  }
+
+  /* 2. Beri jarak aman padding di kontainer portofolio */
+  .portfolio .portfolio-item,
+  .portfolio-content,
+  .portfolio-wrap {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-bottom: 25px !important;
+  }
+
+  /* 3. Rapikan badge/tag teknologi di bawah gambar agar tidak bertumpuk */
+  .portfolio-content .tags,
+  .portfolio-item .badges {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
 }
