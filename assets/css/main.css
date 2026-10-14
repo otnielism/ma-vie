@@ -3100,72 +3100,40 @@ img, video, iframe, svg {
 }
 
 /* ==========================================================
-   HILANGKAN OVERLAY & TOMBOL SAAT HOVER/KLIK PORTOFOLIO
+   FINAL FIX PORTFOLIO: TAMPILKAN TEKS, HANYA BUANG TOMBOL
    ========================================================== */
 
-/* 1. Sembunyikan lapisan gelap (overlay) secara total */
+/* 1. Biarkan kontainer info/teks portofolio tampil normal di bawah gambar */
 .portfolio .portfolio-item .portfolio-info {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
-/* 2. Pastikan wrapper gambar tidak memiliki background gelap saat hover */
-.portfolio .portfolio-item .portfolio-wrap::before {
-  display: none !important;
-  background: none !important;
-}
-
-/* 3. Sembunyikan tombol merah bulat (+ dan link) */
-.portfolio .portfolio-item .portfolio-links {
-  display: none !important;
-  opacity: 0 !important;
-}
-
-/* 4. Opsional: Beri sedikit efek scale saat hover agar kartu terasa interaktif,
-   tanpa overlay yang mengganggu visual gambar. */
-.portfolio .portfolio-item .portfolio-wrap:hover img {
-  transform: scale(1.03);
-  transition: transform 0.3s ease-in-out;
-}
-
-/* ==========================================================
-   PERBAIKAN: TAMPILKAN DESKRIPSI PORTOFOLIO KEMBALI
-   (Hapus Overlay Item, Pertahankan Teks Deskripsi)
-   ========================================================== */
-
-/* 1. Kembalikan display `.portfolio-info` agar deskripsi teks muncul kembali */
-.portfolio .portfolio-item .portfolio-info {
-  display: block !important;
   opacity: 1 !important;
   visibility: visible !important;
-  background: none !important; /* Hapus background gelap bawaan template */
-  padding: 15px !important;
-  position: static !important; /* Buat deskripsi mengalir secara alami di bawah gambar */
+  position: relative !important;
+  background: var(--surface-color) !important; /* Menggunakan warna card bawaan template */
+  padding: 20px !important;
+  margin-top: 0 !important;
+  transition: none !important;
 }
 
-/* 2. Sembunyikan HANYA overlay gelap saat hover di atas gambar */
-.portfolio .portfolio-item .portfolio-wrap::before {
-  display: none !important;
-  background: none !important;
-}
-
-/* 3. Sembunyikan tombol merah bulat (+ dan link) */
+/* 2. HANYA sembunyikan tombol merah bulat (+ dan link) */
 .portfolio .portfolio-item .portfolio-links {
   display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
 }
 
-/* 4. Pastikan teks deskripsi memiliki warna yang benar dan terbaca */
+/* 3. Pastikan overlay gelap transparan saat hover tidak menutupi teks */
+.portfolio .portfolio-item .portfolio-wrap::before {
+  display: none !important;
+}
+
+/* 4. Pastikan teks judul dan kategori di dalam info card terlihat jelas */
 .portfolio .portfolio-item .portfolio-info h4 {
+  font-size: 18px !important;
+  font-weight: 600 !important;
   color: var(--heading-color) !important;
-  margin-top: 10px !important;
   margin-bottom: 5px !important;
 }
 
 .portfolio .portfolio-item .portfolio-info p {
-  color: var(--default-color) !important;
-  opacity: 0.8 !important;
   font-size: 14px !important;
+  color: color-mix(in srgb, var(--default-color), transparent 30%) !important;
+  margin-bottom: 0 !important;
 }
