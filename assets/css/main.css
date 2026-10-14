@@ -3098,3 +3098,19 @@ img, video, iframe, svg {
     margin-bottom: 30px !important;
   }
 }
+
+/* ==========================================================
+   FIX PORTFOLIO THUMBNAIL CLICK OVERLAY
+   ========================================================== */
+
+/* Pastikan overlay tidak menghalangi atau merusak tampilan gambar saat aktif */
+.portfolio .portfolio-item .portfolio-info,
+.portfolio .portfolio-item .portfolio-wrap:hover .portfolio-info {
+  background: rgba(0, 0, 0, 0.4) !important;
+  opacity: 1;
+}
+
+/* Sembunyikan atau atur ulang tombol aksi bawaan template jika mengganggu */
+.portfolio .portfolio-item .portfolio-links {
+  opacity: 1 !important;
+}
