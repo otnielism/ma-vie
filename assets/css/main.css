@@ -3100,17 +3100,31 @@ img, video, iframe, svg {
 }
 
 /* ==========================================================
-   FIX PORTFOLIO THUMBNAIL CLICK OVERLAY
+   HILANGKAN OVERLAY & TOMBOL SAAT HOVER/KLIK PORTOFOLIO
    ========================================================== */
 
-/* Pastikan overlay tidak menghalangi atau merusak tampilan gambar saat aktif */
-.portfolio .portfolio-item .portfolio-info,
-.portfolio .portfolio-item .portfolio-wrap:hover .portfolio-info {
-  background: rgba(0, 0, 0, 0.4) !important;
-  opacity: 1;
+/* 1. Sembunyikan lapisan gelap (overlay) secara total */
+.portfolio .portfolio-item .portfolio-info {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
-/* Sembunyikan atau atur ulang tombol aksi bawaan template jika mengganggu */
+/* 2. Pastikan wrapper gambar tidak memiliki background gelap saat hover */
+.portfolio .portfolio-item .portfolio-wrap::before {
+  display: none !important;
+  background: none !important;
+}
+
+/* 3. Sembunyikan tombol merah bulat (+ dan link) */
 .portfolio .portfolio-item .portfolio-links {
-  opacity: 1 !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* 4. Opsional: Beri sedikit efek scale saat hover agar kartu terasa interaktif,
+   tanpa overlay yang mengganggu visual gambar. */
+.portfolio .portfolio-item .portfolio-wrap:hover img {
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
 }
