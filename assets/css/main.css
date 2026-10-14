@@ -3015,38 +3015,46 @@ img, video, iframe, svg {
    ========================================== */
 
 @media (max-width: 768px) {
-  /* 1. Beri jarak aman padding di bagian container resume */
-  .resume {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+  /* 1. Beri jarak aman padding keseluruhan pada kontainer resume */
+  .resume, 
+  .resume .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 
-  /* 2. Geser timeline ke kanan agar garis & dot merah tidak terpotong */
+  /* 2. Geser posisi garis timeline vertikal ke dalam agar tidak terpotong */
+  .resume .resume-item article,
+  .resume .resume-content {
+    position: relative !important;
+    padding-left: 25px !important; /* Memberi ruang agar teks tidak menabrak garis */
+    margin-left: 5px !important;
+    border-left: 2px solid var(--accent-color) !important; /* Pindahkan border garis ke content wrapper jika perlu */
+  }
+
+  /* 3. Sembunyikan atau posisikan ulang garis bawaan jika menumpuk ganda */
   .resume .resume-item .resume-content {
-    padding-left: 2rem !important; /* Memberi ruang untuk garis dan dot */
-    margin-left: 0.5rem !important;
+    border-left: none !important; 
   }
 
-  .about .timeline-item,
-  .resume .resume-item {
-    padding-left: 28px !important; /* Memastikan dot merah berada pas di dalam layar */
+  /* 4. Pastikan titik merah (dot) berada pas di atas garis tanpa keluar layar */
+  .resume .resume-item .dot,
+  .about .timeline-item .dot {
+    left: -5px !important;
+    top: 5px !important;
+    width: 12px !important;
+    height: 12px !important;
   }
 
-  /* 3. Rapikan Header & Social Links di Layar Kecil */
-  .header .container-fluid,
-  .header .container {
+  /* 5. Rapikan jarak teks pengalaman & pendidikan di HP */
+  .resume .resume-item ul {
     padding-left: 15px !important;
-    padding-right: 15px !important;
+    margin-top: 10px !important;
   }
-
-  .header .header-social-links {
-    padding-right: 0 !important;
-  }
-
-  /* 4. Optimasi Ukuran Font Heading agar Proporsional di HP */
-  .resume .resume-item .resume-title,
-  .section-title h2 {
-    font-size: 1.8rem !important;
+  
+  .resume .resume-item ul li {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 8px !important;
   }
 }
 
@@ -3054,32 +3062,39 @@ img, video, iframe, svg {
    FIX PORTFOLIO CARD & IMAGE CROP ON MOBILE
    ========================================== */
 
+/* 1. Paksa semua wrapper/container gambar portofolio melepas batasan height kaku */
+.portfolio .portfolio-item,
+.portfolio .portfolio-content,
+.portfolio .portfolio-wrap,
+.portfolio .portfolio-img,
+.portfolio-box,
+.portfolio-item .img-fluid,
+.portfolio-content .img-fluid {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+/* 2. Paksa tag gambar tampil 100% utuh tanpa ter-crop */
+.portfolio img,
+.portfolio-item img,
+.portfolio-content img,
+.portfolio-wrap img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  aspect-ratio: auto !important;
+  display: block !important;
+}
+
+/* 3. Beri jarak samping aman di HP agar card tidak nempel ke pinggir layar */
 @media (max-width: 768px) {
-  /* 1. Mencegah gambar portofolio terpotong/ter-crop di HP */
-  .portfolio .portfolio-item img,
-  .portfolio-content img,
-  .portfolio-wrap img,
-  .portfolio-box img {
-    height: auto !important;          /* Batalkan tinggi kaku */
-    max-height: none !important;      /* Hilangkan batasan tinggi */
-    object-fit: contain !important;   /* Tampilkan seluruh isi gambar utuh */
-    width: 100% !important;
-  }
-
-  /* 2. Beri jarak aman padding di kontainer portofolio */
   .portfolio .portfolio-item,
-  .portfolio-content,
-  .portfolio-wrap {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    margin-bottom: 25px !important;
-  }
-
-  /* 3. Rapikan badge/tag teknologi di bawah gambar agar tidak bertumpuk */
-  .portfolio-content .tags,
-  .portfolio-item .badges {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
+  .portfolio-content {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-bottom: 30px !important;
   }
 }
